@@ -93,7 +93,7 @@ def getMar():
     return novDF    
 
 def cleanup(df):
-    df = df.rename(columns={'matchup':'Away','Unnamed: 1':'Home'})
+    df = df.rename(columns={'MATCHUP':'Away','MATCHUP.1':'Home'})
     df['Away'] = df['Away'].map(lambda x: removeRankings(x))
     df['Home'] = df['Home'].map(lambda x: removeRankings(x))
     return df
