@@ -2,6 +2,19 @@ import pandas as pd
 from datetime import datetime
 from time import sleep
 
+def appendThisYear(mmdd):
+    yyyy = datetime.now().year
+    yyyy = str(yyyy)
+    yyyymmdd = yyyy + mmdd
+    return int(yyyymmdd)
+
+def appendNextYear(mmdd):
+    yyyy = datetime.now().year
+    yyyy += 1
+    yyyy = str(yyyy)
+    yyyymmdd = yyyy + mmdd
+    return int(yyyymmdd)
+
 def redoBase(date_num):
     base_final = f'https://www.espn.com/mens-college-basketball/schedule/_/date/{date_num}/group/50'
     return base_final
@@ -47,36 +60,36 @@ def processDate(date_num):
     return f'{month}-{day}-{year}'
 
 def getNov():
-    date_num = 20231109
-    final_num = 20231130
+    date_num = appendThisYear('1109')
+    final_num = appendThisYear('1130')
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF
 
 def getDec():
-    date_num = 20231201
-    final_num = 20231231
+    date_num = appendThisYear('1201')
+    final_num = appendThisYear('1231')
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF
 
 def getJan():
-    date_num = 20240101
-    final_num = 20240131
+    date_num = appendNextYear('0101')
+    final_num = appendNextYear('0131')
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF
 
 def getFeb():
-    date_num = 20240201
-    final_num = 20240228
+    date_num = appendNextYear('0201')
+    final_num = appendNextYear('0228')
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF
 
 def getMar():
-    date_num = 20240301
-    final_num = 20240306
+    date_num = appendNextYear('0301')
+    final_num = appendNextYear('0306')
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF    
@@ -87,9 +100,6 @@ def cleanup(df):
     df['Away'] = df['Away'].apply(lambda x: removeRankings(x))
     df['Home'] = df['Home'].apply(lambda x: removeRankings(x))
     return df
-
-def connor(x):
-    return 'Connor'
 
 def removeRankings(x):
     l = x.split(' ')
@@ -108,7 +118,6 @@ def main():
     mainDF = getNov()
     print('November is done')
     print(datetime.now() - startTime)
-    #mainDF = mainDF.append(getDec())
     mainDF = pd.concat([mainDF,getDec()])
     print('December is done')
     print(datetime.now() - startTime)
