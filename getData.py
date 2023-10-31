@@ -19,7 +19,7 @@ def initialDF(date_num):
 
 def repeatDF(novDF,date_num,final_num):
     while date_num <= final_num:
-        if date_num != 20221224 or date_num != 20221226:
+        if date_num != 20231224 or date_num != 20231226:
             base_final = redoBase(date_num)
             try:
                 my_df = pd.read_html(base_final)[0]
@@ -47,36 +47,36 @@ def processDate(date_num):
     return f'{month}-{day}-{year}'
 
 def getNov():
-    date_num = 20221109
-    final_num = 20221130
+    date_num = 20231109
+    final_num = 20231130
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF
 
 def getDec():
-    date_num = 20221201
-    final_num = 20221231
+    date_num = 20231201
+    final_num = 20231231
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF
 
 def getJan():
-    date_num = 20230101
-    final_num = 20230131
+    date_num = 20240101
+    final_num = 20240131
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF
 
 def getFeb():
-    date_num = 20230201
-    final_num = 20230228
+    date_num = 20240201
+    final_num = 20240228
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF
 
 def getMar():
-    date_num = 20230301
-    final_num = 20230306
+    date_num = 20240301
+    final_num = 20240306
     novDF, date_num = initialDF(date_num)
     novDF = repeatDF(novDF,date_num,final_num)
     return novDF    
@@ -122,7 +122,7 @@ def main():
     print('March is done')
     print(datetime.now() - startTime)
     mainDF = cleanup(mainDF)
-    mainDF.to_csv('NCAA2022-23_Final.csv',index=False)
+    mainDF.to_csv('NCAA2023-24_Final.csv',index=False)
     print(datetime.now() - startTime)
     print('Done!')
 
