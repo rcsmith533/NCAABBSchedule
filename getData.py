@@ -32,7 +32,7 @@ def initialDF(date_num):
 
 def repeatDF(novDF,date_num,final_num):
     while date_num <= final_num:
-        if date_num != 20231224 or date_num != 20231226:
+        if date_num != 20241224 or date_num != 20241226:
             base_final = redoBase(date_num)
             try:
                 my_df = pd.read_html(base_final)[0]
@@ -131,7 +131,7 @@ def main():
     print('March is done')
     print(datetime.now() - startTime)
     mainDF = cleanup(mainDF)
-    mainDF.to_csv('NCAA2023-24_Final.csv',index=False)
+    mainDF.to_csv('NCAA2024-25_Final.csv',index=False)
     print(datetime.now() - startTime)
     print('Done!')
 
